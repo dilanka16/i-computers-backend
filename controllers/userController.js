@@ -78,3 +78,5 @@ export function isAdmin(req){
     }
     return true
 }
+
+//add try catch for async await
