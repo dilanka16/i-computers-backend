@@ -43,6 +43,7 @@ export function getAllProducts(req, res) {
                 });
             }
         )
+        //const products = await Product.find();
     }else{
         Product.find({isAvailable : true}).then(
             (products)=>{
