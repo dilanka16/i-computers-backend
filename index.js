@@ -3,11 +3,11 @@ import mongoose from "mongoose"
 import userRouter from "./routes/userRouter.js"
 import productRouter from "./routes/productRouter.js"
 import jwt from "jsonwebtoken";
+import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config()
 
-
-
-
-const mongoURI = "mongodb+srv://dila:123@cluster0.mvsmgrb.mongodb.net/?appName=Cluster0"
+const mongoURI = process.env.MONGO_URL
 mongoose.connect(mongoURI).then(
     ()=>{
         console.log("Conneted to MongoDB cluster")
@@ -15,6 +15,8 @@ mongoose.connect(mongoURI).then(
 )
 
 const app = express()
+
+app.use(cors())
 
 app.use(express.json())
 
@@ -50,9 +52,9 @@ app.use((req,res,next)=>{
 
 })
 
+app.use("/api/users",userRouter)
+app.use("/api/products",productRouter)
 
-app.use("/users",userRouter)
-app.use("/products",productRouter)
 
 
 
