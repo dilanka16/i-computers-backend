@@ -27,7 +27,7 @@ app.use((req,res,next)=>{
     const token = authorizationheader.replace("Bearer ", "")
     
 
-    jwt.verify(token, "secretkey97#2026",
+    jwt.verify(token, process.env.JWT_SECRET,
       (error, content)=>{
         if(content == null){
           console.log("Invalid token")

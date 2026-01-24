@@ -53,7 +53,7 @@ export function loginUser(req,res){
                     
                 };
 
-                const token = jwt.sign(payload, "secretkey97#2026" ,{ expiresIn: "150h" })
+                const token = jwt.sign(payload, process.env.JWT_SECRET ,{ expiresIn: "150h" })
 
             res.json({
                 message: "Login Succesful",
