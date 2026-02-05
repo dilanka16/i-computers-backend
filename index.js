@@ -5,6 +5,7 @@ import productRouter from "./routes/productRouter.js"
 import jwt from "jsonwebtoken";
 import cors from "cors";
 import dotenv from "dotenv";
+import orderRouter from "./routes/orderRouter.js";
 dotenv.config()
 
 const mongoURI = process.env.MONGO_URL
@@ -54,6 +55,7 @@ app.use((req,res,next)=>{
 
 app.use("/api/users",userRouter)
 app.use("/api/products",productRouter)
+app.use("/api/orders", orderRouter)
 
 
 
